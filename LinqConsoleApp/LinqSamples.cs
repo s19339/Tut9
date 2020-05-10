@@ -333,7 +333,14 @@ namespace LinqConsoleApp
         /// </summary>
         public void Task9()
         {
-            
+              var res9 = Emps.Where(e=>e.Job=="Frontend programmer")
+                .OrderByDescending(e=>e.HireDate).Take(1);
+
+
+            var res2 = (from e in Emps
+                         where e.Job == "Frontend programmer"
+                         select e).Take(1);
+
 
         }
 
@@ -368,7 +375,23 @@ namespace LinqConsoleApp
         //perform a CROSS JOIN join between collections Emps and Depts
         public void Task12()
         {
-            
+             var res2 = Emps.SelectMany(emp => Depts, (emp, dept) => new
+            {
+                emp.Empno,
+                emp.Ename,
+                emp.Job,
+                emp.Mgr,
+                emp.Salary,
+                emp.HireDate,
+                dept.Deptno,
+                dept.Dname,
+                dept.Loc
+            });
+            res1.ToList().ForEach(Console.WriteLine);
+            res2.ToList().ForEach(Console.WriteLine);
+        }
+    }
+}
         }
     }
 }
