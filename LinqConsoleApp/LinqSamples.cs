@@ -392,6 +392,4 @@ namespace LinqConsoleApp
         }
     }
 }
-        }
-    }
-}
+  
